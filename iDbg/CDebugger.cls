@@ -277,6 +277,9 @@ Public UseSymbols As Boolean
 
 Private ModuleBpx As Collection 'so we can set breakpoints on dlls not loaded yet and they can be rebased wo err
 Private exports As New CLoadExports
+Private Declare Function LoadLibrary Lib "kernel32" Alias "LoadLibraryA" (ByVal lpLibFileName As String) As Long
+
+
  
 Sub About()
     
@@ -382,7 +385,7 @@ End Function
 Private Sub Class_Terminate()
     
     On Error Resume Next
-    StopDbg
+    If isDebugging Then StopDbg
     Set subclass = Nothing
     Set tmrUnBlock = Nothing
     Unload frmDummy
@@ -613,6 +616,20 @@ End Function
 
 
 Private Sub Class_Initialize()
+    
+    Dim h As String
+    
+    h = LoadLibrary("crashmon2.dll")
+    If h = 0 Then
+        h = LoadLibrary(App.path & "\crashmon2.dll")
+        If h = 0 Then RaiseEvent DebugString("Could not find CrashMon2.dll in " & App.path)
+    End If
+    
+    h = LoadLibrary("olly.dll")
+    If h = 0 Then
+        h = LoadLibrary(App.path & "\olly.dll")
+        If h = 0 Then RaiseEvent DebugString("Could not find olly.dll in " & App.path)
+    End If
     
     Debug.Print "Initilizing CDebug objptr=" & ObjPtr(Me)
     Initilize 0

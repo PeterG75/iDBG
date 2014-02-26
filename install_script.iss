@@ -9,10 +9,10 @@ OutputBaseFilename=iDbg_setup
 OutputDir=./
 
 [Files]
-Source: ./dependancy\olly.dll; DestDir: {win}
-Source: ./dependancy\crashmon2.dll; DestDir: {win}
-Source: ./\iDbg.dll; DestDir: {app}; Flags: regserver
-Source: ./dependancy\spSubclass.dll; DestDir: {win}; Flags: regserver
+Source: ./dependancy\olly.dll; DestDir: {app}
+Source: ./dependancy\crashmon2.dll; DestDir: {app}
+Source: ./dependancy\iDbg.dll; DestDir: {app}; Flags: regserver
+Source: ./dependancy\spSubclass.dll; DestDir: {app}; Flags: regserver
 Source: ./dependancy\TLBINF32.DLL; DestDir: {win}; Flags: regserver
 Source: ./\test2.exe; DestDir: {app}
 Source: ./\winmain.dll; DestDir: {app}
@@ -89,6 +89,27 @@ Source: ./\olly_dll\olly.dsp; DestDir: {app}\olly_dll
 Source: ./\olly_dll\olly.dsw; DestDir: {app}\olly_dll
 Source: ./\olly_dll\readme.htm; DestDir: {app}\olly_dll
 Source: ./\olly_dll\Readme.txt; DestDir: {app}\olly_dll
+Source: Samples\VB6\AllocLogger\test\main.cpp; DestDir: {app}\Samples\VB6\AllocLogger\test
+Source: Samples\VB6\AllocLogger\test\test.dsp; DestDir: {app}\Samples\VB6\AllocLogger\test
+Source: Samples\VB6\AllocLogger\test\test.dsw; DestDir: {app}\Samples\VB6\AllocLogger\test
+Source: Samples\VB6\AllocLogger\test\test.ncb; DestDir: {app}\Samples\VB6\AllocLogger\test
+Source: Samples\VB6\AllocLogger\test\test.opt; DestDir: {app}\Samples\VB6\AllocLogger\test
+Source: Samples\VB6\AllocLogger\test\test.plg; DestDir: {app}\Samples\VB6\AllocLogger\test
+Source: Samples\VB6\AllocLogger\allocfree_options.png; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\allocfree_screenshot.png; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\CMem.cls; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\CmnDlg.ctl; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\CmnDlg.ctx; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\fmLibDebug2.frm; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\frmLibDebug.frm; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\mem_logger.exe; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\Project1.vbp; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\Project1.vbw; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\README.txt; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\simple-fso..bas; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\test.exe; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\ucHexEdit.ctl; DestDir: {app}\Samples\VB6\AllocLogger\
+Source: Samples\VB6\AllocLogger\virtualalloc_types.txt; DestDir: {app}\Samples\VB6\AllocLogger\
 
 [Dirs]
 Name: {app}\crashmon2
@@ -102,6 +123,8 @@ Name: {app}\Samples\PHP5
 Name: {app}\Samples\C#
 Name: {app}\test2
 Name: {app}\olly_dll
+Name: {app}\Samples\VB6\AllocLogger
+Name: {app}\Samples\VB6\AllocLogger\test
 
 [Run]
 Filename: {app}\Readme.txt; Description: View readme file now?; Flags: shellexec postinstall
@@ -112,6 +135,7 @@ Name: {group}\Source\crashmon2.dsw; Filename: {app}\crashmon2\crashmon2.dsw; Wor
 Name: {group}\Uninstall.exe; Filename: {app}\unins000.exe; WorkingDir: {app}
 Name: {group}\Samples\VB6_Debugger_UI.vbp; Filename: {app}\Samples\VB6\Debugger_UI\Project1.vbp
 Name: {group}\Samples\VB6_Tracer.vbp; Filename: {app}\Samples\VB6\Automated_Debugging\Project1.vbp
+Name: {group}\Samples\VB6_AllocLogger.vbp; Filename: {app}\Samples\VB6\AllocLogger\Project1.vbp
 Name: {group}\Samples\C#_Readme.txt; Filename: {app}\Samples\C#\README.txt
 Name: {group}\Samples\C#_Tracer.sln; Filename: {app}\\Samples\C#\WindowsApplication1.sln
 Name: {group}\Samples\PHP_Readme.txt; Filename: {app}\Samples\PHP5\ReadMe.txt

@@ -22,6 +22,17 @@
 
 		  portions of this file were adapted from the MS SDK Deb debugger example
 
+		  NOTE: i just removed safeCoCreate.cpp I was getting a crash here:
+		  
+		  CRT_INIT
+			void __cdecl _cexit()
+			    j_?_Release@?$_com_ptr_t@V?$_com_IIID@U_TLIApplication@TLI@@$1?_GUID_8b21775d_717d_11ce_ab5b_d41203c10000@@3U__s_GUID@@A@@@@AAEXXZ
+
+          something to do with _TLIApplicationPtr pTlia(__uuidof(TLIApplication)); creating a live instance on its own.
+		  tried to Release it atexit() but its not used in this project anyway so screw it. fight with it latter..
+
+
+
 */
 
 #include <windows.h>
@@ -59,6 +70,22 @@ void __stdcall GetErrorMessage(char* buf500){ strcpy(buf500,errMsg);}
 void __stdcall Continue(int decesion){ 	debugDecision = decesion /*DBG_CONTINUE*/; }
 void __stdcall StopDebugger(){ 	TerminateThread(hDebugEventThread,0); isDebugging = 0;}
 int  __stdcall ActivePID(){ if(isDebugging==1){return pid;}else{return 0;}}
+extern void ReleaseTLI(void);
+
+bool dll_initilized = false;
+
+BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD reason, LPVOID lpvReserved)
+{
+
+	if(reason==DLL_PROCESS_ATTACH && !dll_initilized){
+		//atexit(ReleaseTLI);
+		dll_initilized = true;
+	}
+
+	return 1;
+
+}
+
 
 int DbgMsg(DEBUG_EVENT *Buffer){
   

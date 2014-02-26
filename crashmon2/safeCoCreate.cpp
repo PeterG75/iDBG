@@ -37,6 +37,10 @@ using namespace TLI;
 
 _TLIApplicationPtr pTlia(__uuidof(TLIApplication)); //one live instance for lifetime of app
 
+void ReleaseTLI(void){
+	if(pTlia) pTlia->Release();
+}
+
 
 void SafeRelease(IUnknown *iUnk){
 	

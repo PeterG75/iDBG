@@ -13,9 +13,9 @@ LIBRARY crashmon2
 		InitStackWalk
 		GetCallStack
 		GetTibForThread
-		TestClsID
-		CreateIDispObj
-		GetInterfaceInfoForClsid
+		;TestClsID
+		;CreateIDispObj
+		;GetInterfaceInfoForClsid
 		InitSearchPath
 		Cleanup
 		LoadModuleSymbols
